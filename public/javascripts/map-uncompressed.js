@@ -1,4 +1,8 @@
 $(function(){
+	$('#map_selector').change(function(){
+		window.location = "/" + this.value;
+	});
+
 	var maptiler = new google.maps.ImageMapType({ 
 	  getTileUrl: function(coord, zoom) { 
 	  	if (coord.x < 0 || (Math.pow(2,zoom)-coord.y-1) < 0 || (Math.pow(2,zoom)-coord.y-1) >= Math.pow(2,zoom) || coord.x >= Math.pow(2,zoom))

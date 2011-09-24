@@ -1,21 +1,38 @@
- <% content_for :app_header do %>
- 	<!--[if lt IE 8]>
-		<style type="text/css">#map { height:100% }</style>
-        
+<% content_for :app_header do %>
+	<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/ie.css">
 	<![endif]-->
- 	<script type="text/javascript">
- 		var map_loc = '<%= @map.slug %>';
- 		var map_max_zoom = <%= @map.max_zoom %>;
- 		var map_min_zoom = <%= @map.min_zoom %>;
- 		var map_init_zoom = <%= @map.init_zoom %>;
- 	</script>
- <% end -%> 
- <div id="wrapper">
-	<div id="header"></div>
+	<script type="text/javascript">
+		var map_loc = '<%= @map.slug %>';
+		var map_max_zoom = <%= @map.max_zoom %>;
+		var map_min_zoom = <%= @map.min_zoom %>;
+		var map_init_zoom = <%= @map.init_zoom %>;
+	</script>
+<% end -%> 
+	<div id="header">
+		<h1 id="title">Old Paris Maps</h1>
+	</div>
 	<div id="sub_header">
-		<div class="controls"></div>
+		<div id="controls">
+			<select id="map_selector">
+				<% @maps.each do |map| %>
+					<option value="<%= map.year %>"<%= "selected='selected'" if map == @map %>><%= map.title %></option>
+				<% end %>
+			</select>
+			Share:
+			<!-- Facebook -->
+			<iframe src="//www.facebook.com/plugins/like.php?href=oldparismaps.com&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
+			<!-- Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="miletbaker" data-related="gotripod">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+			
+			Have:
+			<button id="embed">Embed</button>
+			<a href="<%= @map.download_path %>">
+				<button>Download</button>
+			</a>
+		</div>
 	</div>
-	<div id="map_wrapper">
-		<div id="map"></div>
+	<div id="map"></div>
+	<div id="footer">
+
 	</div>
-</div>

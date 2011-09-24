@@ -1,8 +1,13 @@
-body, html {padding:0px;margin:0px;height:100%; }
+@charset "UTF-8";
+body, html {padding:0;margin:0;height:100%; }
 body { background: transparent url(../images/bg.jpg); }
-#wrapper {}
-#header { height:75px; background: transparent url(../images/header_s1.jpg) repeat-x;}
-#sub_header { height:43px; padding:5px; background: transparent url(../images/sub_header_s1.jpg) repeat-x;}
-#sub_header .controls { margin:0px auto; width: 1000px; height:43px; background: transparent url(../images/cc_s1.jpg) no-repeat right center; }
-#map_wrapper { margin:20px auto 0; width:900px; padding:50px; background-color:#131313; }
-#map { height:600px; width:900px; overflow:hidden; }
+h1 {font-family: 'IM Fell DW Pica', serif; size:40px; font-style:italic; margin:0 0 5px; padding:0;}
+#header { display:block; height:45px; padding:20px 20px 10px 20px; background: transparent url(../images/header_s1.jpg) repeat-x; text-shadow: #FFBF6F 1px 1px 1px;}
+#sub_header { height:43px; padding:5px 20px; background: transparent url(../images/sub_header_s1.jpg) repeat-x;}
+#sub_header #controls { min-width:700px; height:43px; background: transparent url(../images/cc_s1.jpg) no-repeat right center; }
+#sub_header #controls a { text-decoration:none; }
+#map { position:absolute; width:100%; top:128px; right:0; bottom:40px; }
+#footer { position:absolute; height:40px; background:#131313; left:0; bottom:0; width:100%; }
+
+/** Social Tweeks **/
+#fb-root { display:inline; }
