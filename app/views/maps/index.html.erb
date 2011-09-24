@@ -1,0 +1,21 @@
+ <% content_for :app_header do %>
+ 	<!--[if lt IE 8]>
+		<style type="text/css">#map { height:100% }</style>
+        
+	<![endif]-->
+ 	<script type="text/javascript">
+ 		var map_loc = '<%= @map.slug %>';
+ 		var map_max_zoom = <%= @map.max_zoom %>;
+ 		var map_min_zoom = <%= @map.min_zoom %>;
+ 		var map_init_zoom = <%= @map.init_zoom %>;
+ 	</script>
+ <% end -%> 
+ <div id="wrapper">
+	<div id="header"></div>
+	<div id="sub_header">
+		<div class="controls"></div>
+	</div>
+	<div id="map_wrapper">
+		<div id="map"></div>
+	</div>
+</div>

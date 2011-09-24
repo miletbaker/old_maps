@@ -1,0 +1,20 @@
+<div class="right"><%= will_paginate %></div>
+
+<h1>Maps</h1>
+
+<fieldset>
+<table class="full-width">
+	<% @maps.each do |map| %>
+	<tr>
+		<td> <%= image_tag map.thumbnail_path, :size => "100x50" %> </td>
+		<td> <%= map.title %> </td>
+		<td> <%= link_to "Edit", edit_admin_map_path(map) %> | <%= link_to  'Delete', [:admin, map], :confirm => 'Are you sure you would like to delete this article?', :method => :delete %>  </td>
+	</tr>
+	<% end -%>
+</table>
+</fieldset>
+
+<% content_for :gtadmin_sidebar do %>
+	<br/>
+	<%= link_to "Add Map", new_admin_map_path, :class => "button" %>
+<% end -%> 

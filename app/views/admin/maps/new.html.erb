@@ -1,0 +1,16 @@
+<%= form_for([:admin, @map]) do |f| %>
+	<h1>New Map</h1>
+
+
+			<%= render :partial => 'map_form', :locals => { :f => f } %>
+ 
+			<fieldset>
+				<ol class="form">
+					<li>
+						<%= link_to 'Cancel', admin_maps_path %>
+						<%= f.submit 'Save Map' %>
+					</li>
+				</ol>
+			</fieldset>
+
+<% end %>

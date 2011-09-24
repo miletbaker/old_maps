@@ -1,0 +1,19 @@
+<%= error_messages_for :map, :header_message => "Please check the information you have provided below.", :message => "", :class => "alert" %>
+
+<fieldset>
+	<ol class="form">
+		<li><%= f.label :title %></li>
+		<li><%= f.text_field :title, :class => "big-text", :size => 51 %></li>
+		<li><%= f.label :slug %></li>
+		<li><%= f.text_field :slug %></li>
+		<li><%= f.text_area :description, :rows => 5, :cols => 65 %></li>
+		<li><%= f.label :year %></li>
+		<li><%= f.text_field :year %></li>
+		<li><%= f.label :min_zoom %></li>
+		<li><%= f.text_field :min_zoom %></li>	
+		<li><%= f.label :max_zoom %></li>
+		<li><%= f.text_field :max_zoom %></li>
+		<li><%= f.label :init_zoom %></li>
+		<li><%= f.text_field :init_zoom %></li>
+	</ol>
+</fieldset>
