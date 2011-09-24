@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title><%= @page_title %></title>
+		<link rel="stylesheet" href="/stylesheets/admin.css"/>
+		<%= javascript_include_tag "application" %>
+		<%= yield :gtadmin_header %>
+		<%= csrf_meta_tag %>
+	</head>
+	<body>
+		<div id="header_bar">
+			<div id="header" class="content">
+				<div id="header_logo">
+					[Logo]
+				</div>
+				<div id="header_links">
+						<%= Time.now.strftime("%A %d %B %Y") %><br/>
+						<em><%= current_user.email %></em> (<%= link_to "Change Password", edit_reset_password_url(current_user.perishable_token) %>)
+				</div>
+				<div id="tab_bar">
+					<ul id="tabs">
+						<%# tabs_tag(:builder => GoAdminTabsBuilder) do |tab| %>
+							<%# tab.name (referenced in controller), label, link [right => true (align right), background => false (no background for tab)] %>
+						    <%# tab.logout   'Logout', logout_url, :right => true, :background => false	 %>
+						<%# end %>
+					</ul>
+				</div>
+				<div class="clear">&nbsp;</div>
+			</div>
+		</div>
+		<div id="title_bar">
+			<div class="content">
+					<h1><%= @page_title %></h1>
+			</div>
+		</div>
+		
+		<div id="body">
+			
+			<div class="content">
+				<% if (gtadmin_content = yield :gtadmin_content).present? %>
+					<%= gtadmin_content %>
+				<% else %>
+					<div id="main" class="section">
+						<% if flash[:notice] %>
+							<div class="notice"><%= flash[:notice] %></div>
+						<% end %>
+						<%= yield %>
+					
+					</div>
+					<div id="side_bar">
+						<%= yield :gtadmin_sidebar %>
+					</div>
+					<div class="clear">&nbsp;</div>
+				<% end %>
+			</div>
+			
+		</div>
+		<div id="footer">
+			<div class="content">
+				&copy; Copyright <%= DateTime.now.year %> Go Tripod Ltd
+			</div>
+		</div>
+	</body>
+</html>
