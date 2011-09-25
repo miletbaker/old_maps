@@ -1,6 +1,15 @@
 $(function(){
+	var map
+
 	$('#map_selector').change(function(){
 		window.location = "/" + this.value;
+	});
+
+	$('#embed').fancybox({
+		content: $('#popup-embed'),
+		onComplete: function(){
+			$('#embed-code').val(window.location + '?embed=' + map.getZoom() + '&lat=' + escape(map.getCenter().lat()) + "&lon=" + escape(map.getCenter().lng()));
+		}
 	});
 
 	var maptiler = new google.maps.ImageMapType({ 
@@ -16,10 +25,9 @@ $(function(){
 	  name:'Paris'
 	});
 
-	var map = new google.maps.Map(document.getElementById("map"), {streetViewControl: false, mapTypeControl: false}); 
+	map = new google.maps.Map(document.getElementById("map"), {streetViewControl: false, mapTypeControl: false}); 
 	map.mapTypes.set('paris', maptiler);
 	map.setMapTypeId('paris');
 	map.setCenter(new google.maps.LatLng(0, 0)); 
-	//map.backgroundColor = '#131313'
 	map.setZoom(1);
 })

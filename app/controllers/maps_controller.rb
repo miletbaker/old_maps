@@ -7,6 +7,6 @@ class MapsController < ApplicationController
 			@map = Map.first
 		end
 		render_404 and return unless @map
-		@maps = Map.order("year ASC").all
+		@maps = Map.order("year ASC").all unless params[:embed].present?
 	end
 end
