@@ -1,7 +1,7 @@
 class Map < ActiveRecord::Base
 
 	def thumbnail_path
-		"/system/#{slug}/#{slug}-512.jpg"
+		"/system/#{slug}/#{slug}-thumb.jpg"
 	end
 
 	def download_path

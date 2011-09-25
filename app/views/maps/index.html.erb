@@ -1,7 +1,16 @@
+<% @page_title = @map.title + " | Old Maps of Paris" %>
 <% content_for :app_header do %>
 	<!--[if lt IE 7]>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/ie.css">
 	<![endif]-->
+	<meta property="og:title" content="<%= @map.title %>"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="http://www.oldparismaps.com"/>
+    <meta property="og:image" content="<%= @map.thumbnail_path %>"/>
+    <meta property="og:site_name" content="Old Maps of Paris"/>
+    <meta property="fb:admins" content="884285441"/>
+    <meta property="og:description"
+          content="<%= @map.description %>"/>
 	<script type="text/javascript">
 		var map_loc = '<%= @map.slug %>';
 		var map_max_zoom = <%= @map.max_zoom %>;
@@ -10,7 +19,7 @@
 	</script>
 <% end -%> 
 	<div id="header">
-		<h1 id="title">Old Paris Maps</h1>
+		<h1 id="title">Old Maps of Paris</h1>
 	</div>
 	<div id="sub_header">
 		<div id="controls">
@@ -19,17 +28,21 @@
 					<option value="<%= map.year %>"<%= "selected='selected'" if map == @map %>><%= map.title %></option>
 				<% end %>
 			</select>
-			Share:
-			<!-- Facebook -->
-			<iframe src="//www.facebook.com/plugins/like.php?href=oldparismaps.com&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
-			<!-- Twitter -->
-			<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="miletbaker" data-related="gotripod">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-			
-			Have:
-			<button id="embed">Embed</button>
-			<a href="<%= @map.download_path %>">
-				<button>Download</button>
-			</a>
+			<div id="have_and_share">
+				<div class="label">Share:</div>
+					<!-- Facebook -->
+					<div class="share">
+					<iframe src="//www.facebook.com/plugins/like.php?href=oldparismaps.com&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
+					<!-- Twitter -->
+					<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="miletbaker" data-related="gotripod">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+				</div>
+				
+				<div class="label">Have:</div>
+				<button id="embed">Embed</button>
+				<a href="<%= @map.download_path %>">
+					<button>Download</button>
+				</a>
+			</div>
 		</div>
 	</div>
 	<div id="map"></div>
