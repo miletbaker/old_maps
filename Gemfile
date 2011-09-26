@@ -13,6 +13,8 @@ gem 'authlogic', '>=3.0.3'
 gem 'tabs_on_rails'
 gem 'dynamic_form'
 gem 'will_paginate'
+gem 'execjs'
+gem 'therubyracer'
 
 group :production do
 	gem 'mysql2'

@@ -31,17 +31,11 @@ end
 
 namespace :omop do
   
-  task :create_db_backup_dir do
-    run "mkdir -p #{shared_path}/db"
-  end
-  
   task :link_shared_db_conf do
     run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
 
 
 end
-after "deploy:setup", "omop:create_db_backup_dir"
-before "deploy", "omop:backup_database"
-after "deploy", "omop:link_shared_db_conf"
+after "deploy:update_code", "omop:link_shared_db_conf"
 after "deploy", "deploy:cleanup"
