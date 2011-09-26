@@ -17,8 +17,7 @@ gem 'execjs'
 gem 'therubyracer'
 
 group :production do
-	gem 'activerecord-mysql-adapter'
-	gem 'mysql2'
+	gem 'mysql2', '> 0.3'
 end
 
 # Gems used only for assets and not required
