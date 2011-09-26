@@ -12,6 +12,7 @@
 		<!--[if lt IE 7]>
 		<%= stylesheet_link_tag "ie" %>
 		<![endif]-->
+		<meta name="description" content="<%= @map.description %>"/>
 		<meta property="og:title" content="<%= @map.title %>"/>
 	    <meta property="og:type" content="article"/>
 	    <meta property="og:url" content="http://www.oldmapsofparis.com"/>
@@ -61,7 +62,13 @@
 
 <% else %>
 	<div id="header">
+	<div id="nav">
+			<ol>
+				<li><a href="http://blog.oldmapsofparis.com/">BLOG</a></li>
+			</ol>
+		</div>
 		<h1 id="title">Old Maps of Paris</h1>
+		
 	</div>
 	<div id="sub_header">
 		<div id="controls">
