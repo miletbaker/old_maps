@@ -2,7 +2,7 @@
 <% if flash[:notice] %>
 	<div class="notice"><%= flash[:notice] %></div>
 <% end %>
-<% form_tag reset_passwords_path do %>
+<%= form_tag reset_passwords_path do %>
 	<ol class="form">
 		<li class="label"><%= label_tag :email, "Email Address" %></li>
 		<li class="field"><%= text_field_tag :email, nil, :class => "big-text" %></li>

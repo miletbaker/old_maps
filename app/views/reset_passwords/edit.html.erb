@@ -3,7 +3,7 @@
 	<div class="notice"><%= flash[:notice] %></div>
 <% end %>
 <%= error_messages_for :user, :header_message => "Please check the information you have provided below.", :message => "", :class => "alert" %>
-<% form_for @user, :url => reset_passwords_url + '/' + @user.perishable_token, :method => :put do |f| %>
+<%= form_for @user, :url => reset_passwords_url + '/' + @user.perishable_token, :method => :put do |f| %>
 	<ol class="form">
 		<li class="label"><%= f.label :password, nil,:class => "login_form_label" %></li>
 		<li class="field"><%= f.password_field :password, :class => "login_form_field" %></li>
