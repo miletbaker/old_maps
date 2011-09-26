@@ -17,7 +17,7 @@ gem 'execjs'
 gem 'therubyracer'
 
 group :production do
-	gem install activerecord-mysql-adapter
+	gem install 'activerecord-mysql-adapter'
 	gem 'mysql2'
 end
 
