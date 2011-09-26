@@ -39,5 +39,5 @@ namespace :omop do
 
 
 end
-after "deploy:update_code", "omop:link_shared_db_conf"
+before "deploy:assets:precompile", "omop:link_shared_db_conf"
 after "deploy", "deploy:cleanup"

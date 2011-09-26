@@ -8,7 +8,6 @@ gem 'rails', '3.1.0'
 gem 'sqlite3'
 
 gem 'json'
-
 gem 'authlogic', '>=3.0.3'
 gem 'tabs_on_rails'
 gem 'dynamic_form'
