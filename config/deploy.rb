@@ -54,5 +54,5 @@ namespace :omop do
 end
 after "deploy:setup", "omop:create_db_backup_dir"
 before "deploy", "omop:backup_database"
-after "deploy:update_code", "omop:link_shared_db_conf"
+after "deploy", "omop:link_shared_db_conf"
 after "deploy", "deploy:cleanup"
