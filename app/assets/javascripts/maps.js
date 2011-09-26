@@ -8,8 +8,16 @@ $(function(){
 	$('#embed').fancybox({
 		content: $('#popup-embed'),
 		onComplete: function(){
-			$('#embed-code').val(window.location + '?embed=' + map.getZoom() + '&lat=' + escape(map.getCenter().lat()) + "&lon=" + escape(map.getCenter().lng()));
+			$('#embed-code').val('<iframe src="' + window.location + '?embed=' + map.getZoom() + '&lat=' + escape(map.getCenter().lat()) + "&lon=" + escape(map.getCenter().lng()) + '" width="560px" height="318px" frameborder="0"></iframe>');
 		}
+	});
+
+	$('#download').click(function(){
+		window.location = "/system/" + map_loc + "/" + map_loc + "-original.jpg"
+	});
+
+	$('#embed-code').click(function(){
+		this.select();
 	});
 
 	var maptiler = new google.maps.ImageMapType({ 
@@ -29,5 +37,5 @@ $(function(){
 	map.mapTypes.set('paris', maptiler);
 	map.setMapTypeId('paris');
 	map.setCenter(new google.maps.LatLng(0, 0)); 
-	map.setZoom(1);
+	map.setZoom(map_init_zoom);
 })

@@ -2,6 +2,8 @@ class Admin::MapsController < ApplicationController
 	layout 'admin'
 	before_filter :requires_authentication
 	before_filter :load_map, :only => [:edit, :update, :destroy]
+	
+
 
 	def index
 		@maps = Map.paginate(:page => params[:page], :per_page => 10)

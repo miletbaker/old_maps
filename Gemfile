@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'json'
 
 gem 'authlogic', '>=3.0.3'
-gem 'tabs_on_rails', "~> 1.3.1"
+gem 'tabs_on_rails'
 gem 'dynamic_form'
 gem 'will_paginate'
 
@@ -21,8 +21,6 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end
 
