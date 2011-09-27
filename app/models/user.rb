@@ -34,6 +34,6 @@ class User < ActiveRecord::Base
 		
 		def logged_in_url
 			# Modify to logged in welcome page, add role logic here
-			"/logged_in"
+			"/admin/maps"
 		end
 end
