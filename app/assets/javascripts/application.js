@@ -8,7 +8,7 @@
 
 $(function(){
 	$('#map_selector').change(function(){
-		window.location = "/" + this.value;
+		window.location = "/map/" + this.value;
 	});
 
 	$('#embed').fancybox({
