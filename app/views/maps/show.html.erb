@@ -1,6 +1,15 @@
 <% @page_title = "Map of #{@map.title} | Old Maps of Paris" %>
 <% content_for :app_header do %>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript">
+			var map_loc = '<%= @map.slug %>';
+			var map_year = '<%= @map.year %>';
+			var map_max_zoom = <%= @map.max_zoom %>;
+			var map_min_zoom = <%= @map.min_zoom %>;
+			var map_init_zoom = <%= params[:zoom].present? ? params[:zoom].to_i : @map.init_zoom %>;
+			var map_lat = <%= params[:lat].present? ? params[:lat].to_f : 0 %>;
+			var map_lon = <%= params[:lon].present? ? params[:lon].to_f : 0 %>;
+		</script>
 	<% unless params[:embed].present? %>
 		<link href='http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica:400,400italic' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
@@ -8,28 +17,24 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 		<%= stylesheet_link_tag "application" %>
-		<%= javascript_include_tag "maps" %>
+		<%= javascript_include_tag "application" %>
 		<!--[if lt IE 7]>
 		<%= stylesheet_link_tag "ie" %>
 		<![endif]-->
 		<meta name="description" content="<%= @map.description %>"/>
 		<meta property="og:title" content="<%= @map.title %>"/>
 	    <meta property="og:type" content="article"/>
-	    <meta property="og:url" content="http://www.oldmapsofparis.com/<%= @map.year %>"/>
-	    <meta property="og:image" content="http://www.oldmapsofparis.com<%= @map.thumbnail_path %>"/>
+	    <meta property="og:url" content="<%= map_url(@map) %>"/>
+	    <meta property="og:image" content="<%= root_url + @map.thumbnail_from_root %>"/>
 	    <meta property="og:site_name" content="Old Maps of Paris"/>
 	    <meta property="fb:admins" content="884285441"/>
 	    <meta property="og:description"
 	          content="<%= @map.description %>"/>
-	    <script type="text/javascript">
-			var map_loc = '<%= @map.slug %>';
-			var map_max_zoom = <%= @map.max_zoom %>;
-			var map_min_zoom = <%= @map.min_zoom %>;
-			var map_init_zoom = <%= @map.init_zoom %>;
-		</script>
 	<% else %>
+		<%= javascript_include_tag "maps" %>
 		<style type="text/css">
 			body, html {padding:0;margin:0;height:100%; }
+			a img {border-style: none;}
 			#map {width:100%; height:100%;}
 			#old_maps_of_paris {position:absolute; bottom:5px; left:80px; width:156px; height:25px; z-index:1000;}
 		</style>
@@ -38,28 +43,8 @@
 <% end -%> 
 <% if params[:embed].present? %>
 	<div id="map"></div>
-	<div id="old_maps_of_paris"><a href="http://www.oldmapsofparis.com/<%= @map.year %>" title="View larger map"><img src="/images/omop-logo.png" target="_TOP" onclick="top.location.href = 'http://www.oldmapsofparis.com/<%= @map.year %>'" alt="Old Maps of Paris"/></a></div>
-	<script type="text/javascript">
-		var maptiler = new google.maps.ImageMapType({ 
-			getTileUrl: function(coord, zoom) { 
-	  			if (coord.x < 0 || (Math.pow(2,zoom)-coord.y-1) < 0 || (Math.pow(2,zoom)-coord.y-1) >= Math.pow(2,zoom) || coord.x >= Math.pow(2,zoom))
-	  				return "/system/blank.jpg";
-	  			else
-					return "/system/<%= @map.slug %>/" + zoom + "/" + coord.x + "-" + (Math.pow(2,zoom)-coord.y-1) + ".jpg";  
-			}, 
-  			tileSize: new google.maps.Size(256, 256), 
-  			maxZoom: <%= @map.max_zoom %>,
-  			minZoom: <%= @map.min_zoom %>,
-  			name:'<%= @map.title %>'
-		});
-
-		var map = new google.maps.Map(document.getElementById("map"), {streetViewControl: false, mapTypeControl: false}); 
-		map.mapTypes.set('paris', maptiler);
-		map.setMapTypeId('paris');
-		map.setCenter(new google.maps.LatLng(<%= params[:lat].to_f %>, <%= params[:lon].to_f %>)); 
-		map.setZoom(<%= params[:embed] %>);
-	</script>
-
+	<div id="old_maps_of_paris"><a href="<%= map_url(@map) %>" title="View larger map"><img src="/images/omop-logo.png" target="_TOP" onclick="top.location.href = '<%= map_url(@map) %>'" alt="Old Maps of Paris"/></a></div>
+	<script type="text/javascript">loadMap();</script>
 <% else %>
 	<div id="header">
 	<div id="nav">
@@ -81,7 +66,7 @@
 				<div class="label">Share:</div>
 					<!-- Facebook -->
 					<div class="share">
-					<iframe src="//www.facebook.com/plugins/like.php?href=www.oldmapsofparis.com/<%= @map.year %>&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
+					<iframe src="//www.facebook.com/plugins/like.php?href=<%= request.host + map_path(@map) %>&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
 					<!-- Twitter -->
 					<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="miletbaker" data-related="gotripod">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 				</div>
@@ -95,12 +80,12 @@
 		</div>
 	</div>
 	<div id="map"></div>
-	<div id="old_maps_of_paris"><a href="http://www.oldmapsofparis.com/<%= @map.year %>" title="View larger map"><img src="/images/omop-logo.png" alt="Old Maps of Paris"/></a></div>
+	<div id="old_maps_of_paris"><a href="<%= map_url(@map) %>" title="View larger map"><img src="/images/omop-logo.png" alt="Old Maps of Paris"/></a></div>
 	<div id="footer">
 		<div id="cc-pd">
 			<p xmlns:dct="http://purl.org/dc/terms/">
 				<a rel="license" href="http://creativecommons.org/publicdomain/mark/1.0/"><img src="/images/cc-pd.gif" alt="Public Domain Mark" /></a>
-				This work (<span property="dct:title"><%= @map.title %></span>), identified by <a href="http://www.miletbaker.com" rel="dct:publisher"><span property="dct:title">Jon Milet Baker</span></a>, is free of known copyright restrictions.
+				This work (<span property="dct:title"><%= @map.title %></span>), identified by <a href="http://www.oldmapsofparis.com" rel="dct:publisher"><span property="dct:title">Old Maps of Paris</span></a>, is free of known copyright restrictions.
 			</p>
 		</div>
 		<div id="yus">

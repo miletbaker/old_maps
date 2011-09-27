@@ -4,5 +4,28 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require jquery
-//= require jquery_ujs
+//= require maps
+
+$(function(){
+	$('#map_selector').change(function(){
+		window.location = "/" + this.value;
+	});
+
+	$('#embed').fancybox({
+		content: $('#popup-embed'),
+		onComplete: function(){
+			$('#embed-code').val('<iframe src="' + 'http://' + window.location.host + '/map/' + map_year + '?embed=true&zoom=' + map.getZoom() + '&lat=' + escape(map.getCenter().lat()) + "&lon=" + escape(map.getCenter().lng()) + '" width="560px" height="318px" frameborder="0"></iframe><br/><a href="' + 'http://' + window.location.host + '/map/' + map_year + '?zoom=' + map.getZoom() + '&lat=' + escape(map.getCenter().lat()) + "&lon=" + escape(map.getCenter().lng()) + '" title="View Larger Map">View Larger Map</a>');
+		}
+	});
+
+	$('#download').click(function(){
+		window.location = "/system/" + map_loc + "/" + map_loc + "-original.jpg"
+	});
+
+	$('#embed-code').click(function(){
+		this.select();
+	});
+
+	loadMap();
+});
+	

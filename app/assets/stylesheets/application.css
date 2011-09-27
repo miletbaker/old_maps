@@ -26,7 +26,7 @@ a img {border-style: none;}
 #map { position:absolute; width:100%; top:128px; right:0; bottom:60px; }
 #footer { position:absolute; height:40px; padding:10px; background:#131313; left:0; bottom:0; right:0; color:#fff; }
 #footer a { color: #ff9900; }
-#footer #cc-pd {float:left; width:350px;}
+#footer #cc-pd {float:left; width:400px;}
 #footer #cc-pd p { margin:0; }
 #footer #cc-pd img { vertical-align:top; float:left; margin-right:10px; }
 #footer #yus { float:right; margin-right:20px; }
