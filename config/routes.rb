@@ -14,6 +14,7 @@ OldMaps::Application.routes.draw do
   match "map/:year" => 'maps#show', :as => :map
   match "map" => 'maps#index'
   match "/:year" => redirect {|params| "/map/#{params[:year]}" }, :constraints => { :year => /\d{3,4}/ }
+  match "sitemap.:format" => 'public#sitemap' 
   root :to => 'maps#index'
 
   # The priority is based upon order of creation:
