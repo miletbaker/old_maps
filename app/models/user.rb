@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
 		def reset_password!  
 			reset_perishable_token!  
-			Notification.deliver_reset_password(self)  
+			Notifier.reset_password(self).deliver 
 		end
 		
 		def logged_in_url

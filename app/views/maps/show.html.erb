@@ -1,26 +1,6 @@
 <% @page_title = "Map of #{@map.title} | Old Maps of Paris" %>
 <% content_for :app_header do %>
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-		<script type="text/javascript">
-			var map_loc = '<%= @map.slug %>';
-			var map_year = '<%= @map.year %>';
-			var map_max_zoom = <%= @map.max_zoom %>;
-			var map_min_zoom = <%= @map.min_zoom %>;
-			var map_init_zoom = <%= params[:zoom].present? ? params[:zoom].to_i : @map.init_zoom %>;
-			var map_lat = <%= params[:lat].present? ? params[:lat].to_f : 0 %>;
-			var map_lon = <%= params[:lon].present? ? params[:lon].to_f : 0 %>;
-		</script>
-	<% unless params[:embed].present? %>
-		<link href='http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica:400,400italic' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-		<%= stylesheet_link_tag "application" %>
-		<%= javascript_include_tag "application" %>
-		<!--[if lt IE 7]>
-		<%= stylesheet_link_tag "ie" %>
-		<![endif]-->
+		<%= render :partial => 'js_vars' %>
 		<meta name="description" content="<%= @map.description %>"/>
 		<meta property="og:title" content="<%= @map.title %>"/>
 	    <meta property="og:type" content="article"/>
@@ -30,26 +10,15 @@
 	    <meta property="fb:admins" content="884285441"/>
 	    <meta property="og:description"
 	          content="<%= @map.description %>"/>
-	<% else %>
-		<%= javascript_include_tag "maps" %>
-		<style type="text/css">
-			body, html {padding:0;margin:0;height:100%; }
-			a img {border-style: none;}
-			#map {width:100%; height:100%;}
-			#old_maps_of_paris {position:absolute; bottom:5px; left:80px; width:156px; height:25px; z-index:1000;}
-		</style>
-	<% end %>
-
+	    <meta itemprop="name" content="<%= @map.title %>">
+		<meta itemprop="description" content="<%= @map.description %>">
+		<meta itemprop="image" content="<%= root_url + @map.thumbnail_from_root %>">
+		<link rel="canonical" href="<%= map_url(@map) %>">
 <% end -%> 
-<% if params[:embed].present? %>
-	<div id="map"></div>
-	<div id="old_maps_of_paris"><a href="<%= map_url(@map) %>" title="View larger map"><img src="/images/omop-logo.png" target="_TOP" onclick="top.location.href = '<%= map_url(@map) %>'" alt="Old Maps of Paris"/></a></div>
-	<script type="text/javascript">loadMap();</script>
-<% else %>
 	<div id="header">
 	<div id="nav">
 			<ol>
-				<li><a href="http://blog.oldmapsofparis.com/">BLOG</a></li>
+				<li><a href="http://www.miletbaker.com/tag/old-maps/" target="_blank">BLOG</a></li>
 			</ol>
 		</div>
 		<h1 id="title">Old Maps of Paris</h1>
@@ -80,18 +49,7 @@
 		</div>
 	</div>
 	<div id="map"></div>
-	<div id="old_maps_of_paris"><a href="<%= map_url(@map) %>" title="View larger map"><img src="/images/omop-logo.png" alt="Old Maps of Paris"/></a></div>
-	<div id="footer">
-		<div id="cc-pd">
-			<p xmlns:dct="http://purl.org/dc/terms/">
-				<a rel="license" href="http://creativecommons.org/publicdomain/mark/1.0/"><img src="/images/cc-pd.gif" alt="Public Domain Mark" /></a>
-				This work (<span property="dct:title"><%= @map.title %></span>), identified by <a href="http://www.oldmapsofparis.com" rel="dct:publisher"><span property="dct:title">Old Maps of Paris</span></a>, is free of known copyright restrictions.
-			</p>
-		</div>
-		<div id="yus">
-			<a rel="author" href="http://www.gotripod.com/" title="Website designed and built in the UK by Go Tripod Ltd" target="_blank"><img src="/images/yus.gif" alt="Go Tripod Ltd" /></a>
-		</div>
-	</div>
+	<div id="old_map"><a href="<%= map_url(@map) %>" title="View larger map"><img src="/images/omop-logo.png" alt="Old Maps of Paris"/></a></div>
 	<div style="display:none">
 		<div id="popup-embed">
 			<h2>Embed This Map</h2>
@@ -99,4 +57,11 @@
 			<textarea id="embed-code"></textarea>
 		</div>
 	</div>
+<% content_for :app_footer do %>
+<div id="cc-pd">
+	<p xmlns:dct="http://purl.org/dc/terms/">
+		<a rel="license" href="http://creativecommons.org/publicdomain/mark/1.0/"><img src="/images/cc-pd.gif" alt="Public Domain Mark" /></a>
+		This work (<span property="dct:title"><a href="<%= "#{root_url}system/#{@map.slug}/#{@map.slug}-original.jpg" %>" rel="dct:creator"><%= @map.title %></a></span>), identified by <a href="http://www.oldmapsofparis.com" rel="dct:publisher"><span property="dct:title">Old Maps of Paris</span></a>, is free of known copyright restrictions.
+	</p>
+</div>
 <% end %>

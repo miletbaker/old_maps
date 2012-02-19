@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  helper_method :current_user_session, :current_user, :current_account
+  helper_method :current_user_session, :current_user, :current_site
 
   private
+
+  def current_site
+    return @current_site if defined?(@current_site)
+	  	@current_site = Site.find_by_domain(request.domain)
+  end
 
 	def requires_authentication
 		unless current_user

@@ -1,7 +1,8 @@
 class MapsController < ApplicationController
 
 	def index
-		redirect_to map_path(Map.first)
+		load_maps
+		@featured_maps = Map.random(3)
 	end
 
 	def show
@@ -10,7 +11,17 @@ class MapsController < ApplicationController
 		else
 			redirect_to map_path(Map.first)
 		end
-		render_404 and return unless @map
-		@maps = Map.order("year ASC").all unless params[:embed].present?
+		redirect_to map_path(Map.first) unless @map
+		if params[:embed].present?
+		  render 'embed', :layout => false
+	  else
+		  load_maps
+		end
+	end
+	
+	private
+	
+	def load_maps
+	  @maps = Map.order("year ASC").all
 	end
 end

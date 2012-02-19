@@ -27,4 +27,17 @@ OldMaps::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "miletbaker.com",
+    :authentication => :plain,
+    :user_name => "donotreply@miletbaker.com",
+    :password => "53F545"
+  }
+  
+  config.action_mailer.default_url_options = { :host => "oldmapsofparis.dev" }
+  
 end

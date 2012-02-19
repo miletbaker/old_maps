@@ -6,7 +6,7 @@ function loadMap(){
 	  	if (coord.x < 0 || (Math.pow(2,zoom)-coord.y-1) < 0 || (Math.pow(2,zoom)-coord.y-1) >= Math.pow(2,zoom) || coord.x >= Math.pow(2,zoom))
 	  		return "/system/blank.jpg";
 	  	else
-			return "/system/" + map_loc + "/" + zoom + "/" + coord.x + "-" + (Math.pow(2,zoom)-coord.y-1) + ".jpg";  
+			return "/system/maps/" + map_id + "/tiles/" + zoom + "/" + coord.x + "-" + (Math.pow(2,zoom)-coord.y-1) + ".jpg";  
 		}, 
 	  tileSize: new google.maps.Size(256, 256), 
 	  maxZoom: map_max_zoom,

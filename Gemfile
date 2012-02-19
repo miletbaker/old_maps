@@ -14,6 +14,9 @@ gem 'dynamic_form'
 gem 'will_paginate'
 gem 'execjs'
 gem 'therubyracer'
+gem 'randumb'
+gem "paperclip", "~> 2.0"
+gem 'rmagick'
 
 group :production do
 	gem 'mysql2', '> 0.3'
@@ -22,6 +25,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'sass'
   gem 'uglifier'
 end
 

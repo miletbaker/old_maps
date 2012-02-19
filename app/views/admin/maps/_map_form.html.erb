@@ -9,11 +9,15 @@
 		<li><%= f.text_area :description, :rows => 5, :cols => 65 %></li>
 		<li><%= f.label :year %></li>
 		<li><%= f.text_field :year %></li>
+		<%- if false -%>
 		<li><%= f.label :min_zoom %></li>
 		<li><%= f.text_field :min_zoom %></li>	
 		<li><%= f.label :max_zoom %></li>
 		<li><%= f.text_field :max_zoom %></li>
 		<li><%= f.label :init_zoom %></li>
 		<li><%= f.text_field :init_zoom %></li>
+		<% end %>
+		<%= image_tag @map.map.url(:thumb) if @map.map.file? %><br/>
+		<%= f.file_field :map %>
 	</ol>
 </fieldset>

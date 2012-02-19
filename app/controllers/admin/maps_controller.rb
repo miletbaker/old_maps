@@ -6,7 +6,7 @@ class Admin::MapsController < ApplicationController
 
 
 	def index
-		@maps = Map.paginate(:page => params[:page], :per_page => 10)
+		@maps = Map.paginate(:page => params[:page], :per_page => 10).order("year")
 	end
 
 	def edit
