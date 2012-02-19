@@ -4,12 +4,17 @@
 	<ol class="form">
 		<li><%= f.label :title %></li>
 		<li><%= f.text_field :title, :class => "big-text", :size => 51 %></li>
-		<li><%= f.label :slug %></li>
-		<li><%= f.text_field :slug %></li>
+		<li><%# select(:map, :site_ids,
+		    Site.all.map { |s| [s.title, s.id]}, {:selected => @map.sites.collect(&:id)},
+		    {:class => "chzn-select chzn-done", :multiple => 1, :id => "choozen"} ) %></li>
+		<%= hidden_field_tag "map[site_ids][]", "" %>
+		<li><%= f.select( :site_ids, Site.all.map { |s| [s.title, s.id]}, {:selected => @map.sites.collect(&:id)}, {:include_blank => true, :multiple => true, :class => "chosen-select"}) %></li>
 		<li><%= f.text_area :description, :rows => 5, :cols => 65 %></li>
 		<li><%= f.label :year %></li>
 		<li><%= f.text_field :year %></li>
 		<%- if false -%>
+		<li><%= f.label :slug %></li>
+		<li><%= f.text_field :slug %></li>
 		<li><%= f.label :min_zoom %></li>
 		<li><%= f.text_field :min_zoom %></li>	
 		<li><%= f.label :max_zoom %></li>

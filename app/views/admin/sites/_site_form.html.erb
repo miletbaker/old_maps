@@ -1,0 +1,18 @@
+<%= error_messages_for :site, :header_message => "Please check the information you have provided below.", :message => "", :class => "alert" %>
+
+<fieldset>
+	<ol class="form">
+		<li><%= f.label :title %></li>
+		<li><%= f.text_field :title, :class => "big-text", :size => 51 %></li>
+		<li><%= f.label :city %></li>
+		<li><%= f.text_field :city, :class => "big-text", :size => 51 %></li>
+		<li><%= f.label :domain %></li>
+		<li><%= f.text_field :domain %></li>
+		<li><%= f.label :locale %></li>
+		<li><%= f.text_field :locale, :size => 2 %></li>
+		<li><%= f.label :short_desc %></li>
+		<li><%= f.text_area :short_desc, :rows => 5, :cols => 65 %></li>
+		<li><%= f.label :long_desc %></li>
+		<li><%= f.text_area :long_desc, :rows => 5, :cols => 65 %></li>
+	</ol>
+</fieldset>

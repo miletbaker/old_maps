@@ -19,7 +19,7 @@ $(function(){
 	});
 
 	$('#download').click(function(){
-		window.location = "/system/" + map_loc + "/" + map_loc + "-original.jpg"
+		window.location = orig_url;
 	});
 
 	$('#embed-code').click(function(){

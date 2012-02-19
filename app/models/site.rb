@@ -7,6 +7,15 @@ class Site < ActiveRecord::Base
   # t.datetime "created_at"
   # t.datetime "updated_at"
   
-  has_many :maps
+  has_many :site_maps
+  has_many :maps, :through => :site_maps
+  
+  def full_domain
+    "http://www.#{domain}"
+  end
+  
+  def linked_sites
+    Site.where("locale = ? and id != ?", locale, id)
+  end
   
 end

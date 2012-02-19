@@ -76,11 +76,11 @@ task :generate_tiles => :environment do
     layer+=1
     crop_master = nil
   end
-  map.max_zoom = layer
+  map.max_zoom = layer-1
   map.init_zoom = layer >= 3 ? 3 : layer
   map.save
   master = nil
-  Rails.logger.info "Finished generating #{layer+1} layers of tiles for #{img_name}"
+  Rails.logger.info "Finished generating #{layer} layers of tiles for #{img_name}"
   
   Notifier.map_processed(map).deliver
 end

@@ -5,33 +5,42 @@
 		<meta property="og:title" content="<%= @map.title %>"/>
 	    <meta property="og:type" content="article"/>
 	    <meta property="og:url" content="<%= map_url(@map) %>"/>
-	    <meta property="og:image" content="<%= root_url + @map.thumbnail_from_root %>"/>
-	    <meta property="og:site_name" content="Old Maps of Paris"/>
+	    <meta property="og:image" content="<%= "#{current_site.full_domain}#{@map.map.url(:social)}" %>"/>
+	    <meta property="og:site_name" content="<%= current_site.title %>"/>
 	    <meta property="fb:admins" content="884285441"/>
 	    <meta property="og:description"
 	          content="<%= @map.description %>"/>
 	    <meta itemprop="name" content="<%= @map.title %>">
 		<meta itemprop="description" content="<%= @map.description %>">
-		<meta itemprop="image" content="<%= root_url + @map.thumbnail_from_root %>">
+		<meta itemprop="image" content="<%= "#{current_site.full_domain}#{@map.map.url(:social)}" %>">
 		<link rel="canonical" href="<%= map_url(@map) %>">
 <% end -%> 
 	<div id="header">
-	<div id="nav">
-			<ol>
-				<li><a href="http://www.miletbaker.com/tag/old-maps/" target="_blank">BLOG</a></li>
-			</ol>
+		<div class="container">
+		<div class="sixteen columns">	
+			<div id="nav" class="nm">
+				<ol>
+					<li><a href="<%= current_site.full_domain %>">HOME</a></li>
+					<% current_site.linked_sites.each do |site| %>
+						<li><a href="<%= site.full_domain %>"><%= site.city.upcase %></a></li>
+					<% end %>
+					<li><a href="http://www.miletbaker.com/tag/old-maps/" target="_blank">BLOG</a></li>
+				</ol>
+			</div>
+			<a href="<%= current_site.full_domain %>"><h1 id="title"><%= current_site.title %></h1></a>
 		</div>
-		<h1 id="title">Old Maps of Paris</h1>
-		
+		</div>
 	</div>
 	<div id="sub_header">
+		<div class="container">
+		<div class="sixteen columns">
 		<div id="controls">
 			<select id="map_selector">
 				<% @maps.each do |map| %>
 					<option value="<%= map.year %>"<%= "selected='selected'" if map == @map %>><%= map.title %></option>
 				<% end %>
 			</select>
-			<div id="have_and_share">
+			<div id="have_and_share" class="nm">
 				<div class="label">Share:</div>
 					<!-- Facebook -->
 					<div class="share">
@@ -60,6 +69,8 @@
 				</div>
 			</div>
 		</div>
+		</div>
+		</div>
 	</div>
 	<div id="map"></div>
 	<div id="old_map"><a href="<%= map_url(@map) %>" title="View larger map"><img src="/images/omop-logo.png" alt="Old Maps of Paris"/></a></div>
@@ -71,10 +82,10 @@
 		</div>
 	</div>
 <% content_for :app_footer do %>
-<div id="cc-pd">
+<div id="cc-pd" class="nm">
 	<p xmlns:dct="http://purl.org/dc/terms/">
 		<a rel="license" href="http://creativecommons.org/publicdomain/mark/1.0/"><img src="/images/cc-pd.gif" alt="Public Domain Mark" /></a>
-		This work (<span property="dct:title"><a href="<%= "#{root_url}system/#{@map.slug}/#{@map.slug}-original.jpg" %>" rel="dct:creator"><%= @map.title %></a></span>), identified by <a href="http://www.oldmapsofparis.com" rel="dct:publisher"><span property="dct:title">Old Maps of Paris</span></a>, is free of known copyright restrictions.
+		This work (<span property="dct:title"><a href="<%= "#{current_site.full_domain}#{@map.map.url(:original)}" %>" rel="dct:creator"><%= @map.title %></a></span>), identified by <a href="<%= current_site.full_domain %>" rel="dct:publisher"><span property="dct:title"><%= current_site.title %></span></a>, is free of known copyright restrictions.
 	</p>
 </div>
 <% end %>

@@ -8,7 +8,7 @@ OldMaps::Application.routes.draw do
   resources :user_sessions
 
   namespace :admin do
-    resources :maps
+    resources :maps, :sites
   end
   
   match "map/:year" => 'maps#show', :as => :map

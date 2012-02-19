@@ -53,13 +53,29 @@ img.scale-with-grid {
 
 	/* Proposed W3C Markup */ 
 	background-image: linear-gradient(top, #E8E8E8 0%, #BABABA 100%);
+	text-shadow: #fff 1px 1px 1px;// #FFBF6F 1px 1px 1px;
 	h1 {
 		margin-top:100px;
 		font-size:70px;
-		text-shadow: #fff 1px 1px 1px;// #FFBF6F 1px 1px 1px;
 		text-align:center;
 	}
+	h2 {
+		margin:20px 0 0;
+		font-weight:normal;
+	}
+	hr { margin-bottom:20px; }
+	.featured-map {
+		background-color:#fff;
+		border:1px solid #eee;
+		//padding:10px 0;
+		-moz-box-shadow:    3px 3px 5px 0 rgba(0,0,0,0.4);
+	  	-webkit-box-shadow: 3px 3px 5px 0 rgba(0,0,0,0.4);
+	  	box-shadow:         3px 3px 5px 0 rgba(0,0,0,0.4);
+		h3 { font-size:18px; font-weight:normal; margin:10px;}
+	}
+	a { text-decoration:none; color:#111; text-align:center;}
 }
+
 
 #header {
 	display: block;
@@ -86,7 +102,9 @@ img.scale-with-grid {
 	background-image: linear-gradient(top, #333333 0%, #212121 100%);
 	color:#fff;
 	text-shadow: #000 1px 1px 1px;// #FFBF6F 1px 1px 1px;
+	a { color:#fff; text-decoration:none; }
 }
+
 
 #sub_header {
 	padding: 5px 20px;
@@ -141,7 +159,6 @@ img.scale-with-grid {
 		margin: 0;
 		font-family: 'IM Fell DW Pica', serif;
 		font-size: 16px;
-		padding-right: 20px;
 		li {
 			float: left;
 			padding-right: 10px;
@@ -190,7 +207,6 @@ img.scale-with-grid {
 	#creators {
 		img { vertical-align:middle; margin:0 5px; }
 		float: right;
-		margin-right: 20px;
 	}
 }
 #popup-embed {
@@ -222,5 +238,9 @@ img.scale-with-grid {
 	
 	#homepage {
 		h1 { font-size:28px; margin-top:20px }
+	}
+	
+	.nm {
+		display:none;
 	}
 }

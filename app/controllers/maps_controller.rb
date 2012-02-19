@@ -2,7 +2,7 @@ class MapsController < ApplicationController
 
 	def index
 		load_maps
-		@featured_maps = Map.random(3)
+		@featured_maps = current_site.maps.random(3)
 	end
 
 	def show
@@ -22,6 +22,6 @@ class MapsController < ApplicationController
 	private
 	
 	def load_maps
-	  @maps = Map.order("year ASC").all
+	  @maps = current_site.maps.order("year ASC").all
 	end
 end

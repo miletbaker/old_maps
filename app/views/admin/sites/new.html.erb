@@ -1,0 +1,16 @@
+<%= form_for([:admin, @site]) do |f| %>
+	<h1>New Site</h1>
+
+
+			<%= render :partial => 'site_form', :locals => { :f => f } %>
+ 
+			<fieldset>
+				<ol class="form">
+					<li>
+						<%= link_to 'Cancel', admin_sites_path %>
+						<%= f.submit 'Save Site' %>
+					</li>
+				</ol>
+			</fieldset>
+
+<% end %>

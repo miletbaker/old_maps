@@ -1,6 +1,7 @@
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
 	var map_id = '<%= @map.id %>';
+	var orig_url = '<%= @map.map.url(:original) %>';
 	var map_year = '<%= @map.year %>';
 	var map_max_zoom = <%= @map.max_zoom %>;
 	var map_min_zoom = <%= @map.min_zoom %>;

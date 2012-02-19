@@ -1,0 +1,21 @@
+<div class="right"><%= will_paginate %></div>
+
+<h1>Sites</h1>
+
+<fieldset>
+<table class="full-width">
+	<% @sites.each do |site| %>
+	<tr>
+		<td> <%= site.title %> </td>
+		<td> <%= site.domain %> </td>
+		<td> <%= link_to pluralize(site.maps.count, "map"), admin_maps_url({:site => site.id}) %></td>
+		<td> <%= link_to "Edit", edit_admin_site_path(site) %> | <%= link_to  'Delete', [:admin, site], :confirm => 'Are you sure you would like to delete this site?', :method => :delete %>  </td>
+	</tr>
+	<% end -%>
+</table>
+</fieldset>
+
+<% content_for :gtadmin_sidebar do %>
+	<br/>
+	<%= link_to "Add Site", new_admin_site_path, :class => "button" %>
+<% end -%> 

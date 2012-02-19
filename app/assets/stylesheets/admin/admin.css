@@ -1,5 +1,6 @@
 /*
  *= require_self
+ *= require /chosen/chosen
 */
 @charset "UTF-8";
 
@@ -491,3 +492,4 @@ li.tab img {
 	overflow: hidden;
 }
 
+.chosen-select { width:200px; }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218210603) do
+ActiveRecord::Schema.define(:version => 20120219210653) do
 
   create_table "maps", :force => true do |t|
     t.string   "title"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20120218210603) do
     t.integer  "init_zoom",        :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "site_id"
     t.string   "map_file_name"
     t.string   "map_content_type"
     t.integer  "map_file_size"
@@ -30,7 +29,15 @@ ActiveRecord::Schema.define(:version => 20120218210603) do
     t.boolean  "available"
   end
 
-  add_index "maps", ["site_id"], :name => "index_maps_on_site_id"
+  create_table "site_maps", :force => true do |t|
+    t.integer  "site_id"
+    t.integer  "map_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "site_maps", ["map_id"], :name => "index_site_maps_on_map_id"
+  add_index "site_maps", ["site_id"], :name => "index_site_maps_on_site_id"
 
   create_table "sites", :force => true do |t|
     t.string   "domain"
@@ -39,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20120218210603) do
     t.string   "long_desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "locale",     :default => "en"
+    t.string   "city"
   end
 
   create_table "users", :force => true do |t|

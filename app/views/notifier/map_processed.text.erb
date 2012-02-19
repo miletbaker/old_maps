@@ -1,6 +1,6 @@
 Dear <%= @user.name %>,
 
-<%= @map.title %> has finished processing and can now be viewed online at <%= "http://www.#{@map.site.domain}/map/#{@map.year}" %>
+<%= @map.title %> has finished processing and can now be viewed online at <%= "http://www.#{@map.sites.first.domain}/map/#{@map.year}" %>
 
 Regards,
 

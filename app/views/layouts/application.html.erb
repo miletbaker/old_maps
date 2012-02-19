@@ -32,11 +32,15 @@
 <body>
 <%= yield %>
 <div id="footer">
-	<%= yield :app_footer %>
-	<div id="creators">
-		A project by 
-		<a rel="author" href="http://www.miletbaker.com/" title="Jon Milet Baker" target="_blank"><img src="/images/jmb.gif" alt="Jon Milet Baker" width="83" height="21" /></a> and
-		<a rel="author" href="http://www.gotripod.com/" title="Website designed and built in the UK by Go Tripod Ltd" target="_blank"><img src="/images/gt.gif" alt="Go Tripod Ltd"  width="83" height="21" /></a>
+	<div class="container">
+		<div class="sixteen columns">
+			<%= yield :app_footer %>
+			<div id="creators">
+				A project by 
+				<a rel="author" href="http://www.miletbaker.com/" title="Jon Milet Baker" target="_blank"><img src="/images/jmb.gif" alt="Jon Milet Baker" width="83" height="21" /></a> and
+				<a rel="author" href="http://www.gotripod.com/" title="Website designed and built in the UK by Go Tripod Ltd" target="_blank"><img src="/images/gt.gif" alt="Go Tripod Ltd"  width="83" height="21" /></a>
+			</div>
+		</div>
 	</div>
 </div>
 </body>
