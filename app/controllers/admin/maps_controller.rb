@@ -42,7 +42,7 @@ class Admin::MapsController < ApplicationController
 	private
 
 	def load_map
-		@map = Map.find(params[:id])
+		@map = Map.find_by_year(params[:id])
 	end
 
 end

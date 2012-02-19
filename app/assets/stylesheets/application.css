@@ -1,0 +1,38 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+*/
+@charset "UTF-8";
+body, html {padding:0;margin:0;height:100%; }
+body { background: transparent url(../images/bg.jpg); font-family: Helvetica, Arial, sans-serif; font-size:12px;}
+h1 {font-family: 'IM Fell DW Pica', serif; font-size:30px; font-style:italic; margin:0 0 5px; padding:0;}
+a img {border-style: none;}
+#header { display:block; height:45px; padding:20px 20px 10px 20px; background: transparent url(../images/header_s1.jpg) repeat-x; text-shadow: #FFBF6F 1px 1px 1px;}
+#sub_header { padding:5px 20px; background: transparent url(../images/sub_header_s1.jpg) repeat-x;}
+#sub_header #controls { min-width:700px; height:43px; }
+#sub_header #controls a { text-decoration:none; position:relative; }
+#sub_header #controls #have_and_share { float:right; background-color:#b1b1b1 ; border-top:1px solid #757575; border-left:1px solid #757575; border-bottom:1px solid #fff; border-right:1px solid #fff; margin:8px 0px 0px 0px; padding:0px 5px;}
+#sub_header #controls div.label { text-shadow: #fff 1px 1px 1px; margin:8px 5px 0; float:left;}
+#sub_header #controls div.share { width:330px; margin-top:4px; float:left;}
+#sub_header #controls div.have { float:left; margin-top:4px; }
+#sub_header #controls #map_selector { display:block; float:left; font-size:20px; margin-top:10px; }
+#nav { float:right; }
+#nav ol { list-style:none; padding:0; margin:0; font-family: 'IM Fell DW Pica', serif; font-size:16px; padding-right:20px;}
+#nav ol li { float:left; padding-right:10px;  }
+#nav ol li a { color:#000; text-decoration:none;}
+#nav ol li a:hover { text-decoration:underline; }
+#map { position:absolute; width:100%; top:128px; right:0; bottom:60px; }
+#footer { position:absolute; height:40px; padding:10px; background:#131313; left:0; bottom:0; right:0; color:#fff; }
+#footer a { color: #ff9900; }
+#footer #cc-pd {float:left; width:400px;}
+#footer #cc-pd p { margin:0; }
+#footer #cc-pd img { vertical-align:top; float:left; margin-right:10px; }
+#footer #yus { float:right; margin-right:20px; }
+#popup-embed { }
+#popup-embed #embed-code { width:500px; height:100px; font-size:14px; border:none;}
+#popup-embed #embed-code:focus {outline: none;}
+#old_maps_of_paris {position:absolute; bottom:65px; left:80px; width:156px; height:25px; z-index:1000;}
+/** Social Tweeks **/
+#fb-root { display:inline; }
