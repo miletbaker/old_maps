@@ -1,0 +1,49 @@
+<% @page_title = "Old Maps of Paris" %>
+<% content_for :app_header do %>
+		<meta name="description" content=""/>
+		<meta property="og:title" content="Old Maps if Paris"/>
+	    <meta property="og:type" content="article"/>
+	    <meta property="og:url" content="<%# map_url(@map) %>"/>
+	    <meta property="og:image" content="<%# root_url + @map.thumbnail_from_root %>"/>
+	    <meta property="og:site_name" content="Old Maps of Paris"/>
+	    <meta property="fb:admins" content="884285441"/>
+	    <meta property="og:description"
+	          content="<%# @map.description %>"/>
+	    <meta itemprop="name" content="<%# @map.title %>">
+		<meta itemprop="description" content="<%# @map.description %>">
+		<meta itemprop="image" content="<%# root_url + @map.thumbnail_from_root %>">
+		<link rel="canonical" href="<%# map_url(@map) %>">
+<% end -%>
+<div id="homepage">
+	<div class="container">
+		<div class="sixteen columns">
+			<h1><%= current_site.title %></h1>
+			
+			
+		</div>
+		<div class="row offset-by-two">
+			<div class="twelve columns">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<% @featured_maps.each do |map| %>
+			<div class="one-third column" style="display:table-cell; vertical-align:middle;">
+				<%= image_tag map.featured_path, :width => "300", :height => "200", :class => "scale-with-grid"%>
+				<p><%= map.title %></p>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	
+</div>
+<% content_for :app_footer do %>
+<div id="cc-pd">
+	<p xmlns:dct="http://purl.org/dc/terms/">
+		<a rel="license" href="http://creativecommons.org/publicdomain/mark/1.0/"><img src="/images/cc-pd.gif" alt="Public Domain Mark" /></a>
+		This maps on this site, identified by <a href="http://www.oldmapsofparis.com" rel="dct:publisher"><span property="dct:title">Old Maps of Paris</span></a>, are free of known copyright restrictions.
+	</p>
+</div>
+<% end %>

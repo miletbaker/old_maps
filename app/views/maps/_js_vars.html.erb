@@ -1,0 +1,10 @@
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+	var map_id = '<%= @map.id %>';
+	var map_year = '<%= @map.year %>';
+	var map_max_zoom = <%= @map.max_zoom %>;
+	var map_min_zoom = <%= @map.min_zoom %>;
+	var map_init_zoom = <%= params[:zoom].present? ? params[:zoom].to_i : @map.init_zoom %>;
+	var map_lat = <%= params[:lat].present? ? params[:lat].to_f : 0 %>;
+	var map_lon = <%= params[:lon].present? ? params[:lon].to_f : 0 %>;
+</script>

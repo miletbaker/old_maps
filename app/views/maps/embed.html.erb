@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><%= "Map of #{@map.title} | Old Maps of Paris" %></title>
+
+	<%= render :partial => 'js_vars' %>
+	<%= javascript_include_tag "maps" %>
+	<style type="text/css">
+		body, html {padding:0;margin:0;height:100%; }
+		a img {border-style: none;}
+		#map {width:100%; height:100%;}
+		#old_map {position:absolute; bottom:5px; left:80px; width:156px; height:25px; z-index:1000;}
+	</style>
+	<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-2030935-10']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+	</script>
+</head>
+<body>
+	<div id="map"></div>
+	<div id="old_map"><a href="<%= map_url(@map) %>" title="View larger map"><img src="/images/omop-logo.png" target="_TOP" onclick="top.location.href = '<%= map_url(@map) %>'" alt="Old Maps of Paris"/></a></div>
+	<script type="text/javascript">loadMap();</script>
+</body>
+</html>
