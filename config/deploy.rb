@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+load "deploy/assets"
 set :domain, "artemis.gotripod.com"
 
 set :user, "deploy"
@@ -10,7 +12,7 @@ set :use_sudo, false
 
 
 default_run_options[:pty] = true
-set :repository,  "git@github.com:miletbaker/old_maps.git"
+set :repository,  "git@git.gotripod.com:old_maps.git"
 set :ssh_options, { :forward_agent => true }
 set :scm, "git"
 
@@ -20,8 +22,6 @@ set :deploy_via, :remote_cache
 role :app, domain
 role :web, domain
 role :db,  domain, :primary => true
-
-load 'deploy/assets'
 
 namespace :deploy do
   task :start do end

@@ -1,4 +1,4 @@
-require 'rmagick'
+require 'RMagick'
 require 'fileutils'
 desc "Generate Tiles"
 task :generate_tiles => :environment do
