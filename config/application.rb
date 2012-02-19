@@ -52,3 +52,4 @@ module OldMaps
     config.assets.version = '1.0'
   end
 end
+Paperclip.options[:command_path] = "/usr/bin"
