@@ -21,6 +21,7 @@
 			<div id="nav" class="nm">
 				<ol>
 					<li><a href="<%= current_site.full_domain %>">HOME</a></li>
+					<li><a href="http://www.miletbaker.com/projects/old-maps-of-project/" target="_blank">ABOUT</a></li>
 					<% current_site.linked_sites.each do |site| %>
 						<li><a href="<%= site.full_domain %>"><%= site.city.upcase %></a></li>
 					<% end %>
