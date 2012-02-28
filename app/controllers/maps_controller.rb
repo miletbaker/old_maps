@@ -1,5 +1,7 @@
 class MapsController < ApplicationController
 
+  before_filter :check_site
+
 	def index
 		load_maps
 		@featured_maps = current_site.maps.random(3)
@@ -20,6 +22,12 @@ class MapsController < ApplicationController
 	end
 	
 	private
+	
+	def check_site
+	  if current_site.nil?
+  	  redirect_to Site.first.full_domain
+	  end
+	end
 	
 	def load_maps
 	  @maps = current_site.maps.order("year ASC").all
