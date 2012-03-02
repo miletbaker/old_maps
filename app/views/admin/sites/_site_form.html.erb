@@ -14,5 +14,7 @@
 		<li><%= f.text_area :short_desc, :rows => 5, :cols => 65 %></li>
 		<li><%= f.label :long_desc %></li>
 		<li><%= f.text_area :long_desc, :rows => 5, :cols => 65 %></li>
+		<%= image_tag @site.logo.url(:medium) if @site.logo.file? %><br/>
+		<%= f.file_field :logo %>
 	</ol>
 </fieldset>

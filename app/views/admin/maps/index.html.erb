@@ -17,4 +17,15 @@
 <% content_for :gtadmin_sidebar do %>
 	<br/>
 	<%= link_to "Add Map", new_admin_map_path, :class => "button" %>
+	<br/>
+	<br/>
+	<div class="section">
+		<%= link_to "All Maps", admin_maps_path({:site => "all"}) %><br/>
+		<% @sites.each do |site| %>
+			<% if session[:site] == site.id %> <strong> <% end %>
+			<%= link_to site.title, admin_maps_path({:site => site.id}) %>
+			<% if session[:site] == site.id %> </strong><% end %>
+			<br/>
+		<% end %>
+	</div>
 <% end -%> 

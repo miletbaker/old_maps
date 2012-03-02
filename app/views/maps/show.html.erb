@@ -28,7 +28,7 @@
 					<li><a href="http://www.miletbaker.com/tag/old-maps/" target="_blank">BLOG</a></li>
 				</ol>
 			</div>
-			<a href="<%= current_site.full_domain %>"><h1 id="title"><%= current_site.title %></h1></a>
+			<a href="<%= current_site.full_domain %>"><h1 id="title"><%= image_tag(current_site.logo.url(:title), :alt => current_site.title) if current_site.logo.file? %></h1></a>
 		</div>
 		</div>
 	</div>
@@ -74,7 +74,7 @@
 		</div>
 	</div>
 	<div id="map"></div>
-	<div id="old_map"><a href="<%= map_url(@map) %>" title="View larger map"><img src="/images/omop-logo.png" alt="Old Maps of Paris"/></a></div>
+	<div id="old_map"><a href="<%= map_url(@map) %>" title="View larger map"><%= image_tag( current_site.logo.url(:medium), :target => "_TOP", :onclick => "top.location.href = '#{map_url(@map)}'", :alt => current_site.title) if current_site.logo.file? %></a></div>
 	<div style="display:none">
 		<div id="popup-embed">
 			<h2>Embed This Map</h2>

@@ -7,11 +7,14 @@ class Admin::MapsController < ApplicationController
 
 	def index
 	  if params[:site].present?
+      params[:site] == "all" ? session[:site] = nil : session[:site] = params[:site] 
+    end
+	  if (params[:site].present? || session[:site].present?) && params[:site] != "all"
 	    @maps = Map.joins(:site_maps).where({ :site_maps => { :site_id => params[:site]}}).paginate(:page => params[:page], :per_page => 10).order("year")
 		else
 		  @maps = Map.paginate(:page => params[:page], :per_page => 10).order("year")
 	  end
-		
+		@sites = Site.all
 	end
 
 	def edit

@@ -19,7 +19,7 @@
 <div id="homepage">
 	<div class="container">
 		<div class="sixteen columns">
-			<h1><%= current_site.title %></h1>
+			<h1><%= image_tag current_site.logo.url(:large), :alt => current_site.title  if current_site.logo.file? %></h1>
 			
 			
 		</div>

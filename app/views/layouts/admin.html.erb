@@ -13,7 +13,7 @@
 		<div id="header_bar">
 			<div id="header" class="content">
 				<div id="header_logo">
-					<img src="/images/omop-logo.png">
+					<%= image_tag current_site.logo.url(:medium) if current_site.logo.file? %>
 				</div>
 				<div id="header_links">
 						<%= Time.now.strftime("%A %d %B %Y") %><br/>

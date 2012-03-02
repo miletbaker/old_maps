@@ -36,23 +36,24 @@ img.scale-with-grid {
 	right: 0;
 	bottom: 60px;
 	overflow:auto;
+	background-color:#F6F4EA;
 	/* IE10 */ 
-	background-image: -ms-linear-gradient(top, #E8E8E8 0%, #BABABA 100%);
+	background-image: -ms-linear-gradient(top, #F6F4EA 0%, #DDCDBD 100%);
 
 	/* Mozilla Firefox */ 
-	background-image: -moz-linear-gradient(top, #E8E8E8 0%, #BABABA 100%);
+	background-image: -moz-linear-gradient(top, #F6F4EA 0%, #DDCDBD 100%);
 
 	/* Opera */ 
-	background-image: -o-linear-gradient(top, #E8E8E8 0%, #BABABA 100%);
+	background-image: -o-linear-gradient(top, #F6F4EA 0%, #DDCDBD 100%);
 
 	/* Webkit (Safari/Chrome 10) */ 
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #E8E8E8), color-stop(1, #BABABA));
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F6F4EA), color-stop(1, #DDCDBD));
 
 	/* Webkit (Chrome 11+) */ 
-	background-image: -webkit-linear-gradient(top, #E8E8E8 0%, #BABABA 100%);
+	background-image: -webkit-linear-gradient(top, #F6F4EA 0%, #DDCDBD 100%);
 
 	/* Proposed W3C Markup */ 
-	background-image: linear-gradient(top, #E8E8E8 0%, #BABABA 100%);
+	background-image: linear-gradient(top, #F6F4EA 0%, #DDCDBD 100%);
 	text-shadow: #fff 1px 1px 1px;// #FFBF6F 1px 1px 1px;
 	h1 {
 		margin-top:100px;

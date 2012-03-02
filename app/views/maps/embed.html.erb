@@ -26,7 +26,7 @@
 </head>
 <body>
 	<div id="map"></div>
-	<div id="old_map"><a href="<%= map_url(@map) %>" title="View larger map"><img src="/images/omop-logo.png" target="_TOP" onclick="top.location.href = '<%= map_url(@map) %>'" alt="Old Maps of Paris"/></a></div>
+	<div id="old_map"><a href="<%= map_url(@map) %>" title="View larger map"><%= image_tag( current_site.logo.url(:medium), :target => "_TOP", :onclick => "top.location.href = '#{map_url(@map)}'", :alt => current_site.title) if current_site.logo.file? %></a></div>
 	<script type="text/javascript">loadMap();</script>
 </body>
 </html>

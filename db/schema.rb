@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120219210653) do
+ActiveRecord::Schema.define(:version => 20120302065840) do
 
   create_table "maps", :force => true do |t|
     t.string   "title"
@@ -46,8 +46,12 @@ ActiveRecord::Schema.define(:version => 20120219210653) do
     t.string   "long_desc"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "locale",     :default => "en"
+    t.string   "locale",            :default => "en"
     t.string   "city"
+    t.string   "logo_file_name"
+    t.integer  "logo_file_size"
+    t.string   "logo_content_type"
+    t.datetime "logo_updated_at"
   end
 
   create_table "users", :force => true do |t|
